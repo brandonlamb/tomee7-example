@@ -20,16 +20,16 @@
         <version.compiler.plugin>3.3</version.compiler.plugin>
         <version.junit>4.12</version.junit>
         <version.surefire.plugin>2.18.1</version.surefire.plugin>
-        <version.tomee>7.0.0-SNAPSHOT</version.tomee>
-        <version.lombok>1.16.4</version.lombok>
+        <version.tomee>7.0.0-M1</version.tomee>
+        <version.lombok>1.16.6</version.lombok>
         <version.postgresql>9.4-1202-jdbc42</version.postgresql>
     </properties>
 
     <dependencies>
         <dependency>
-            <groupId>org.apache.openejb</groupId>
+            <groupId>org.apache.tomee</groupId>
             <artifactId>javaee-api</artifactId>
-            <version>7.0-SNAPSHOT</version>
+            <version>7.0</version>
             <scope>provided</scope>
         </dependency>
 
@@ -47,7 +47,7 @@
     </dependencies>
 
     <build>
-        <finalName>${project.artifactId}</finalName>
+        <finalName>ROOT</finalName>
         <defaultGoal>install</defaultGoal>
 
         <resources>

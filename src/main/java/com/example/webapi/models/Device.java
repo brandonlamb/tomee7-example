@@ -18,8 +18,11 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Test implements Serializable {
+public class Device implements Serializable {
 
   private int id;
   private String name;
+  private String description;
+  private String type;
+  private String status;
 }

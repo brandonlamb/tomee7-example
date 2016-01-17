@@ -1,46 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <tomee>
-    <Resource id="jdbc/PostgresDS" type="DataSource">
-        username postgres
-        password postgres
-        passwordCipher PlainText
-        jdbcUrl jdbc:postgresql://192.168.1.1:5433/example
-        jtaManaged true
-        jdbcDriver org.postgresql.Driver
-        defaultAutoCommit true
-        defaultReadOnly false
-        initialSize 1
-        maxActive 5
-        maxIdle 1
-        minIdle 1
-        #maxWait 1000
-        validationQuery SELECT 1
-        #testOnBorrow true
-        #testOnReturn false
-        testWhileIdle true
-        timeBetweenEvictionRunsMillis 60000
-        numTestsPerEvictionRun 10
-        minEvictableIdleTimeMillis 120000
-        #poolPreparedStatements false
-        #resultSetHoldability 1
-        #maxOpenPreparedStatements 10
-        #jmxEnabled true
-        logSql false
-        removeAbandoned true
-    </Resource>
+    <!--<Resource id="jdbc/PostgresDS" type="DataSource">-->
+        <!--username postgres-->
+        <!--password postgres-->
+        <!--passwordCipher PlainText-->
+        <!--jdbcUrl jdbc:postgresql://45.33.48.134:5432/blacknova-->
+        <!--jtaManaged true-->
+        <!--jdbcDriver org.postgresql.Driver-->
+        <!--defaultAutoCommit true-->
+        <!--defaultReadOnly false-->
+        <!--initialSize 1-->
+        <!--maxActive 5-->
+        <!--maxIdle 1-->
+        <!--minIdle 1-->
+        <!--#maxWait 1000-->
+        <!--validationQuery SELECT 1-->
+        <!--#testOnBorrow true-->
+        <!--#testOnReturn false-->
+        <!--testWhileIdle true-->
+        <!--timeBetweenEvictionRunsMillis 60000-->
+        <!--numTestsPerEvictionRun 10-->
+        <!--minEvictableIdleTimeMillis 120000-->
+        <!--#poolPreparedStatements false-->
+        <!--#resultSetHoldability 1-->
+        <!--#maxOpenPreparedStatements 10-->
+        <!--#jmxEnabled true-->
+        <!--logSql false-->
+        <!--removeAbandoned true-->
+    <!--</Resource>-->
 
-    <Resource id="jms/JmsResourceAdapter" type="ActiveMQResourceAdapter">
-        BrokerXmlConfig =
-        ServerUrl = tcp://127.0.0.1:61616
-    </Resource>
+    <!--<Resource id="jms/JmsResourceAdapter" type="ActiveMQResourceAdapter">-->
+        <!--BrokerXmlConfig =-->
+        <!--ServerUrl = tcp://127.0.0.1:61616-->
+    <!--</Resource>-->
 
-    <Resource id="jms/ConnectionFactory" type="javax.jms.ConnectionFactory">
-        ResourceAdapter = jms/JmsResourceAdapter
-        TransactionSupport xa
-        PoolMaxSize 200
-    </Resource>
+    <!--<Resource id="jms/ConnectionFactory" type="javax.jms.ConnectionFactory">-->
+        <!--ResourceAdapter = jms/JmsResourceAdapter-->
+        <!--TransactionSupport xa-->
+        <!--PoolMaxSize 200-->
+    <!--</Resource>-->
 
-    <Container id="jms/MDBContainer" ctype="MESSAGE">
-        ResourceAdapter = jms/JmsResourceAdapter
-    </Container>
+    <!--<Container id="jms/MDBContainer" ctype="MESSAGE">-->
+        <!--ResourceAdapter = jms/JmsResourceAdapter-->
+    <!--</Container>-->
 </tomee>
