@@ -28,7 +28,8 @@ function create() {
     game.scale.fullScreenScaleMode = Phaser.ScaleManager.SHOW_ALL;
     game.add.tileSprite(0, 0, 1920, 1920, 'background');
     game.world.setBounds(0, 0, 3000, 3000);
-    game.physics.startSystem(Phaser.Physics.P2JS);
+    //game.physics.startSystem(Phaser.Physics.P2JS);
+    game.physics.startSystem(Phaser.Physics.ARCADE);
     cursors = game.input.keyboard.createCursorKeys();
 
     player = game.add.sprite(game.world.centerX, game.world.centerY, playerShip);

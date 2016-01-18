@@ -23,6 +23,8 @@
         <version.tomee>7.0.0-M1</version.tomee>
         <version.lombok>1.16.6</version.lombok>
         <version.postgresql>9.4-1202-jdbc42</version.postgresql>
+        <version.protobuf>3.0.0-beta-2</version.protobuf>
+        <version.msgpack>0.6.12</version.msgpack>
     </properties>
 
     <dependencies>
@@ -44,6 +46,32 @@
             <artifactId>postgresql</artifactId>
             <version>${version.postgresql}</version>
         </dependency>
+
+        <dependency>
+            <groupId>com.google.protobuf</groupId>
+            <artifactId>protobuf-java</artifactId>
+            <version>${version.protobuf}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.msgpack</groupId>
+            <artifactId>msgpack</artifactId>
+            <version>${version.msgpack}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.tomcat</groupId>
+            <artifactId>tomcat-catalina</artifactId>
+            <version>8.0.29</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <!--<dependency>-->
+            <!--<groupId>com.airhacks</groupId>-->
+            <!--<artifactId>jaxrs-cors</artifactId>-->
+            <!--<version>0.0.1</version>-->
+            <!--<scope>compile</scope>-->
+        <!--</dependency>-->
     </dependencies>
 
     <build>

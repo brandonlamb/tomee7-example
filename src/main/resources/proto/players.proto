@@ -1,0 +1,48 @@
+syntax = "proto3";
+package solar;
+
+option java_package = "com.example.webapi.proto.protos";
+option java_outer_classname = "PlayersProtos";
+option optimize_for = SPEED;
+
+message Player {
+    int32 id = 1;
+    string name = 2;
+    string email = 3;
+
+    message Transform {
+        message Position {
+            int32 x = 1;
+            int32 y = 2;
+            int32 z = 3;
+        }
+
+        message Rotation {
+            int32 x = 1;
+            int32 y = 2;
+            int32 z = 3;
+        }
+
+        Position position = 1;
+        Rotation rotation = 2;
+
+        message Ship {
+            string sprite = 1;
+
+            message Scale {
+                int32 x = 1;
+                int32 y = 2;
+            }
+
+            Scale scale = 2;
+        }
+
+        Ship ship = 3;
+    }
+
+    Transform transform = 4;
+}
+
+message Game {
+    repeated Player players = 1;
+}

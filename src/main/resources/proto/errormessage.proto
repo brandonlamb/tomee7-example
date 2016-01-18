@@ -1,0 +1,12 @@
+syntax = "proto3";
+package solar;
+
+option java_package = "com.example.webapi.proto.protos";
+option java_outer_classname = "SolarProtos";
+option optimize_for = SPEED;
+
+message ErrorMessage {
+    string message = 1;
+    int32 code = 2 [default = 500];
+    string details = 3;
+};
