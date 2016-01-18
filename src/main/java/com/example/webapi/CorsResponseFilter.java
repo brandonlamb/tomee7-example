@@ -2,6 +2,7 @@ package com.example.webapi;
 
 import java.io.IOException;
 import java.util.List;
+
 import javax.ws.rs.container.ContainerRequestContext;
 import javax.ws.rs.container.ContainerResponseContext;
 import javax.ws.rs.container.ContainerResponseFilter;
@@ -16,14 +17,19 @@ import javax.ws.rs.ext.Provider;
 @Provider
 public class CorsResponseFilter implements ContainerResponseFilter {
 
-  public static final String ALLOWED_METHODS = "GET, POST, PUT, DELETE, OPTIONS, HEAD";
-  public final static int MAX_AGE = 42 * 60 * 60;
-  public final static String DEFAULT_ALLOWED_HEADERS = "origin,accept,content-type";
+  private static final String ALLOWED_METHODS = "GET, POST, PUT, DELETE, OPTIONS, HEAD";
+  private final static int MAX_AGE = 42 * 60 * 60;
+  private final static String DEFAULT_ALLOWED_HEADERS = "origin,accept,content-type";
 
   @Override
-  public void filter(ContainerRequestContext requestContext, ContainerResponseContext responseContext) throws IOException {
+  public void filter(
+    final ContainerRequestContext requestContext,
+    final ContainerResponseContext responseContext
+  ) throws IOException {
+    System.out.println("Executing REST CORS Response");
+
     final MultivaluedMap<String, Object> headers = responseContext.getHeaders();
-    headers.add("Access-Control-Allow-Origin", "*");
+//    headers.add("Access-Control-Allow-Origin", "*");
     headers.add("Access-Control-Allow-Origin", "http://space-empires.com");
     headers.add("Access-Control-Allow-Headers", getRequestedHeaders(requestContext));
     headers.add("Access-Control-Allow-Credentials", "true");
@@ -32,18 +38,19 @@ public class CorsResponseFilter implements ContainerResponseFilter {
     headers.add("x-responded-by", "cors-response-filter");
   }
 
-  String getRequestedHeaders(ContainerRequestContext responseContext) {
-    List<String> headers = responseContext.getHeaders().get("Access-Control-Request-Headers");
+  private String getRequestedHeaders(final ContainerRequestContext responseContext) {
+    final List<String> headers = responseContext.getHeaders().get("Access-Control-Request-Headers");
     return createHeaderList(headers);
   }
 
-  String createHeaderList(List<String> headers) {
+  private String createHeaderList(final List<String> headers) {
     if (headers == null || headers.isEmpty()) {
       return DEFAULT_ALLOWED_HEADERS;
     }
-    StringBuilder retVal = new StringBuilder();
-    for (int i = 0; i < headers.size(); i++) {
-      String header = headers.get(i);
+    final StringBuilder retVal = new StringBuilder();
+//    for (int i = 0; i < headers.size(); i++) {
+    for (final String header : headers) {
+//      String header = headers.get(i);
       retVal.append(header);
       retVal.append(',');
     }

@@ -1,6 +1,6 @@
-package com.example.webapi.proto;
+package com.example.ws.msgpack;
 
-import com.google.protobuf.Message;
+import org.msgpack.annotation.Message;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -18,17 +18,17 @@ import javax.ws.rs.ext.MessageBodyWriter;
 import javax.ws.rs.ext.Provider;
 
 @Provider
-@Produces(ProtocolBufferMediaType.APPLICATION_PROTOBUF)
-public class ProtobufMessageBodyWriter implements MessageBodyWriter<Message> {
+@Produces("application/x-msgpack")
+public class MsgpackMessageBodyWriter implements MessageBodyWriter<Message> {
 
   private final Map<Object, byte[]> buffer = new WeakHashMap<>();
 
   @Override
   public boolean isWriteable(
-      final Class<?> type,
-      final Type genericType,
-      final Annotation[] annotations,
-      final MediaType mediaType
+    final Class<?> type,
+    final Type genericType,
+    final Annotation[] annotations,
+    final MediaType mediaType
   ) {
     System.out.println("isWriteable");
     return Message.class.isAssignableFrom(type);
@@ -36,11 +36,11 @@ public class ProtobufMessageBodyWriter implements MessageBodyWriter<Message> {
 
   @Override
   public long getSize(
-      final Message m,
-      final Class<?> type,
-      final Type genericType,
-      final Annotation[] annotations,
-      final MediaType mediaType
+    final Message m,
+    final Class<?> type,
+    final Type genericType,
+    final Annotation[] annotations,
+    final MediaType mediaType
   ) {
     System.out.println("getSize");
     final ByteArrayOutputStream baos = new ByteArrayOutputStream();
@@ -58,13 +58,13 @@ public class ProtobufMessageBodyWriter implements MessageBodyWriter<Message> {
   }
 
   public void writeTo(
-      final Message m,
-      final Class type,
-      final Type genericType,
-      final Annotation[] annotations,
-      final MediaType mediaType,
-      final MultivaluedMap httpHeaders,
-      final OutputStream entityStream
+    final Message m,
+    final Class type,
+    final Type genericType,
+    final Annotation[] annotations,
+    final MediaType mediaType,
+    final MultivaluedMap httpHeaders,
+    final OutputStream entityStream
   ) throws IOException, WebApplicationException {
     System.out.println("writeTo");
     entityStream.write(buffer.remove(m));

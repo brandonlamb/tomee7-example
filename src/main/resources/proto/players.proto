@@ -1,7 +1,7 @@
 syntax = "proto3";
 package solar;
 
-option java_package = "com.example.webapi.proto.protos";
+option java_package = "com.example.ws.proto.protos";
 option java_outer_classname = "PlayersProtos";
 option optimize_for = SPEED;
 

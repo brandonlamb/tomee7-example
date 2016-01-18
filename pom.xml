@@ -25,6 +25,7 @@
         <version.postgresql>9.4-1202-jdbc42</version.postgresql>
         <version.protobuf>3.0.0-beta-2</version.protobuf>
         <version.msgpack>0.6.12</version.msgpack>
+        <version.msgpack-core>0.8.1</version.msgpack-core>
     </properties>
 
     <dependencies>

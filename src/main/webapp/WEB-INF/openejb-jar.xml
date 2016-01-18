@@ -4,7 +4,8 @@
     <pojo-deployment class-name="jaxrs-application">
         <properties>
             lombok.getter.noIsPrefix = false
-            #cxf.jaxrs.providers = com.example.webapi.proto.ProtobufMessageBodyReader,com.example.webapi.proto.ProtobufMessageBodyWriter
+            #cxf.jaxrs.providers = com.example.webapi.CorsResponseFilter
+            #com.example.ws.proto.ProtobufMessageBodyReader,com.example.ws.proto.ProtobufMessageBodyWriter
         </properties>
     </pojo-deployment>
 </openejb-jar>

@@ -1,6 +1,6 @@
-package com.example.webapi.msgpack;
+package com.example.ws.proto;
 
-import org.msgpack.annotation.Message;
+import com.google.protobuf.Message;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -18,8 +18,8 @@ import javax.ws.rs.ext.MessageBodyWriter;
 import javax.ws.rs.ext.Provider;
 
 @Provider
-@Produces("application/x-msgpack")
-public class MsgpackMessageBodyWriter implements MessageBodyWriter<Message> {
+@Produces(ProtocolBufferMediaType.APPLICATION_PROTOBUF)
+public class ProtobufMessageBodyWriter implements MessageBodyWriter<Message> {
 
   private final Map<Object, byte[]> buffer = new WeakHashMap<>();
 

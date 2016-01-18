@@ -1,8 +1,8 @@
-package com.example.webapi.proto;
+package com.example.ws.proto;
 
 import com.google.protobuf.InvalidProtocolBufferException;
 
-import com.example.webapi.proto.protos.DropwizardProtos.ErrorMessage;
+import com.example.ws.proto.protos.DropwizardProtos.ErrorMessage;
 
 import javax.ws.rs.core.Response;
 import javax.ws.rs.ext.ExceptionMapper;

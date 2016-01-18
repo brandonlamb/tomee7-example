@@ -16,11 +16,10 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@XmlRootElement(name = "player")
+@XmlRootElement(name = "chat")
 @XmlAccessorType(XmlAccessType.PROPERTY)
-public class Player {
+public class Chat {
 
-  public int id;
-  public String name;
-  public String email;
+  public int playerId;
+  public String message;
 }

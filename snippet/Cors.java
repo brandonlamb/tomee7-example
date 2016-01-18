@@ -12,7 +12,7 @@ import javax.ws.rs.core.Response;
 public class Cors implements ContainerResponseFilter {
 
   @Override
-  public void filter(ContainerRequestContext requestCtx, ContainerResponseContext responseCtx)
+  public void filter(final ContainerRequestContext requestCtx, final ContainerResponseContext responseCtx)
       throws IOException {
     System.out.println("Executing REST request filter");
 

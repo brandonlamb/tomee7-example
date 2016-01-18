@@ -1,4 +1,4 @@
-package com.example.webapi;
+package com.example.ws;
 
 import com.example.webapi.models.Device;
 
@@ -20,17 +20,17 @@ import lombok.extern.java.Log;
 @Log
 public class SessionHandler {
 
-//  private final Set<Session> sessions = new HashSet<>();
+  //  private final Set<Session> sessions = new HashSet<>();
   private final Set<Session> sessions = Collections.synchronizedSet(new HashSet<>());
   private final Set<Device> devices = Collections.synchronizedSet(new HashSet<>());
   private int deviceId = 0;
 
-  public void addSession(final Session session) {
+  void addSession(final Session session) {
     sessions.add(session);
     devices.forEach(i -> sendToSession(session, createAddMessage(i)));
   }
 
-  public void removeSession(final Session session) {
+  void removeSession(final Session session) {
     sessions.remove(session);
   }
 
@@ -52,10 +52,10 @@ public class SessionHandler {
       devices.remove(device);
       final JsonProvider provider = JsonProvider.provider();
       sendToAllConnectedSessions(
-          provider.createObjectBuilder()
-              .add("action", "remove")
-              .add("id", id)
-              .build()
+        provider.createObjectBuilder()
+          .add("action", "remove")
+          .add("id", id)
+          .build()
       );
     }
   }
@@ -72,11 +72,11 @@ public class SessionHandler {
       }
 
       sendToAllConnectedSessions(
-          provider.createObjectBuilder()
-              .add("action", "toggle")
-              .add("id", device.getId())
-              .add("status", device.getStatus())
-              .build()
+        provider.createObjectBuilder()
+          .add("action", "toggle")
+          .add("id", device.getId())
+          .add("status", device.getStatus())
+          .build()
       );
     }
   }
@@ -93,13 +93,13 @@ public class SessionHandler {
   private JsonObject createAddMessage(final Device device) {
     final JsonProvider provider = JsonProvider.provider();
     return provider.createObjectBuilder()
-        .add("action", "add")
-        .add("id", device.getId())
-        .add("name", device.getName())
-        .add("type", device.getType())
-        .add("status", device.getStatus())
-        .add("description", device.getDescription())
-        .build();
+      .add("action", "add")
+      .add("id", device.getId())
+      .add("name", device.getName())
+      .add("type", device.getType())
+      .add("status", device.getStatus())
+      .add("description", device.getDescription())
+      .build();
   }
 
   private void sendToAllConnectedSessions(final JsonObject message) {

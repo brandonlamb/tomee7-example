@@ -1,4 +1,4 @@
-package com.example.webapi.proto;
+package com.example.ws.proto;
 
 import com.google.protobuf.GeneratedMessage;
 import com.google.protobuf.Message;
